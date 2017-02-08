@@ -1,3 +1,5 @@
+# 02-2017 | Moss McLaughlin
+
 '''
 
 Get text content from tweet IDs
@@ -50,8 +52,12 @@ def get_tweet_content(doc):
         get_tweet(conversation)
 
 def get_tweet(ids):
-#        print(ids)
-#        tweets = api.statuses_lookup(id_=ids, include_entities=False, trim_user=True)
+
+        #  To call multiple tweets per request 
+        #  (note order is shuffled, limit 100/request)
+        #tweets = api.statuses_lookup(id_=ids, include_entities=False, trim_user=True)
+
+        # Only pull tweets with full conversation
         try: 
             tweets=  [api.get_status(ids[0]),api.get_status(ids[1]),api.get_status(ids[2])]
             with open("tweets.txt","a") as f:
@@ -61,7 +67,8 @@ def get_tweet(ids):
                     f.write(" | ")
                 f.write("\n")
         except tweepy.TweepError: None
+        
     
-#get_tweet_content("test.txt")
+
 get_tweet_content("data/MSRSocialMediaConversationCorpus/twitter_ids.tuning.txt")
 
