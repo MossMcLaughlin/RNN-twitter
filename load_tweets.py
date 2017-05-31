@@ -34,7 +34,7 @@ def load_data(filename="tweets.txt", vocabulary_size=2000, min_sent_characters=0
 
         # Filter sentences
         txt = [s for s in txt if len(s) >= min_sent_characters]
-#        txt = [s for s in txt if "@" not in s]
+
 
         # Append SENTENCE_START and SENTENCE_END
     ii = 0
